@@ -1,0 +1,45 @@
+package Main;
+
+public class Main {
+	
+	public static int removeDuplicates(int [] numeros) {
+		
+		int k = numeros.length,index=numeros[0];
+		
+		for(int i=0;i<numeros.length;i++) {
+			System.out.println(i);
+			int aux=0;
+			
+			for(int j=i+1;index != numeros[j];j++) {
+					k++;
+					aux++;
+					numeros[j] = -1;
+			}
+			
+			i=aux;
+			aux=0;
+			
+		}
+		
+		return k;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] nums = {0,0,1,2,2,2,3,3,4}; // Input array
+		
+
+		int k = removeDuplicates(nums); // Calls your implementation
+
+		int[] expectedNums = new int[k]; // The expected answer with correct length
+		
+		System.out.println(k);
+		
+		/*assert k == expectedNums.length;
+		for (int i = 0; i < k; i++) {
+		    assert nums[i] == expectedNums[i];
+		}*/
+
+	}
+
+}

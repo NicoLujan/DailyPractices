@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\Nicolas\Desktop\Nico\Trabajo\DayliPractices\.metadata\.plugins\org.eclipse.jdt.core
+2622165137.index
+1865797976.index
+1223024170.index
