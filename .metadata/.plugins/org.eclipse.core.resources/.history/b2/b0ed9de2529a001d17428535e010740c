@@ -47,12 +47,13 @@ public class Main {
 
 		int k = removeDuplicates(nums); // Calls your implementation
 
-		int[] expectedNums = new int[nums.length - k]; // The expected answer with correct length
+		int[] expectedNums = new int[k]; // The expected answer with correct length
 		
 		int indexAux=0;
-
+		
 		for(int i=0;i<nums.length;i++) {
 			if(nums[i] != -1) {
+				System.out.println(expectedNums[indexAux]);
 				expectedNums[indexAux] = nums[i];
 				indexAux++;
 			}

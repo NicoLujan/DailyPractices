@@ -20,21 +20,20 @@ public class Main {
 	
 	public static int removeDuplicates(int [] numeros) {
 		
-		int k = 0;
+		int k = numeros.length;
 		
-		for(int i=0;i<=numeros.length-1;i++) {
+		for(int i=0;i<numeros.length;i++) {
+			System.out.println(i);
 			int aux = 0;
-			if(i != numeros.length-1)
-				if(numeros[i] == numeros[i+1]) {
-					for(int j=i+1 ; numeros[i] == numeros[j] ; j++) {
-						numeros[j] = -1;
-						k++;
-						aux++;
-					}
-				
-					i = i + aux;
+			if(numeros[i] == numeros[i+1]) {
+				for(int j=i+1 ; numeros[i] == numeros[j] ; j++) {
+					numeros[j] = -1;
+					k++;
+					aux++;
 				}
-						
+			}
+			
+			i = aux;			
 		}
 		
 		return k;
@@ -47,19 +46,14 @@ public class Main {
 
 		int k = removeDuplicates(nums); // Calls your implementation
 
-		int[] expectedNums = new int[nums.length - k]; // The expected answer with correct length
+		int[] expectedNums = new int[k]; // The expected answer with correct length
 		
-		int indexAux=0;
-
-		for(int i=0;i<nums.length;i++) {
-			if(nums[i] != -1) {
-				expectedNums[indexAux] = nums[i];
-				indexAux++;
-			}
-		}
+		System.out.println(k);
 		
-		for(int i=0;i<expectedNums.length;i++)
-			System.out.println(expectedNums[i]);
+		/*assert k == expectedNums.length;
+		for (int i = 0; i < k; i++) {
+		    assert nums[i] == expectedNums[i];
+		}*/
 
 	}
 

@@ -53,6 +53,7 @@ public class Main {
 
 		for(int i=0;i<nums.length;i++) {
 			if(nums[i] != -1) {
+				System.out.println(nums[i]);
 				expectedNums[indexAux] = nums[i];
 				indexAux++;
 			}
