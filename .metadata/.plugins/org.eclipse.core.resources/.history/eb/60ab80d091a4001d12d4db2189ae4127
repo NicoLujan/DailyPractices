@@ -20,43 +20,41 @@ public class Main {
 	
 	public static int removeDuplicates(int [] numeros) {
 		
-		int k = numeros.length;
+		int k = 0;
 		
 		for(int i=0;i<=numeros.length-1;i++) {
 			int aux = 0;
-			if(numeros[i] == numeros[i+1]) {
-				for(int j=i+1 ; numeros[i] == numeros[j] ; j++) {
-					numeros[j] = -1;
-					k++;
-					aux++;
-					for(int l=0;k<numeros.length;k++)
-						System.out.println(numeros[l]);
-				}
+			if(i != numeros.length-1)
+				if(numeros[i] == numeros[i+1]) {
+					for(int j=i+1 ; numeros[i] == numeros[j] ; j++) {
+						numeros[j] = -1;
+						k++;
+						aux++;
+					}
 				
-				i = i + aux;
-			}
+					i = i + aux;
+				}
 						
 		}
 		
 		return k;
 	}
+	
+	public static Integer fibo(Integer x) {
+		if(x <= 0)
+			return 0;
+		else if (x == 1)
+			return 1;
+		else
+			return x = x * fibo(x-1);
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] nums = {0,0,1,2,2,2,3,3,4}; // Input array
+		Integer x = 3;
 		
-
-		int k = removeDuplicates(nums); // Calls your implementation
-
-		int[] expectedNums = new int[k]; // The expected answer with correct length
-		
-		System.out.println(k);
-		
-		/*assert k == expectedNums.length;
-		for (int i = 0; i < k; i++) {
-		    assert nums[i] == expectedNums[i];
-		}*/
-
+		System.out.println(fibo(x));
+	
 	}
 
 }

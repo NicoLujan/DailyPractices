@@ -39,28 +39,22 @@ public class Main {
 		
 		return k;
 	}
+	
+	public static Integer fibo(Integer x) {
+		if(x <= 0)
+			return 0;
+		else if (x == 1)
+			return 1;
+		else
+			return x = x * fibo(x-1);
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] nums = {0,0,1,2,2,2,3,3,4}; // Input array
+		Integer x = 4;
 		
-
-		int k = removeDuplicates(nums); // Calls your implementation
-
-		int[] expectedNums = new int[nums.length - k]; // The expected answer with correct length
-		
-		int indexAux=0;
-
-		for(int i=0;i<nums.length;i++) {
-			if(nums[i] != -1) {
-				expectedNums[indexAux] = nums[i];
-				indexAux++;
-			}
-		}
-		
-		for(int i=0;i<expectedNums.length;i++)
-			System.out.println(expectedNums[i]);
-
+		System.out.println(fibo(x));
+	
 	}
 
 }
