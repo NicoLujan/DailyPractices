@@ -187,5 +187,68 @@ BEGIN
 	
 END
 
+--------------------------------------------- Ejercicio 8) ----------------------------------------------------------
+/*
+You are working as a recruiter at a big IT company, and you're actively looking for candidates who take the top places in major programming
+contests. Since the grand finale of the annual City Competition, you've been reaching out to the top participants from the leaderboard, and
+successfully so.
+
+You have already interviewed all the prize winners (the top 3 participants), but that's not enough right now. Your company needs more
+specialists, so now you would like to connect with the participants who took the next 5 places.
+
+The contest leaderboard is stored in a table leaderboard with the following columns:
+	id: unique id of the participant;
+	name: the name of the participant;
+	score: the score the participant achieved in the competition.
+
+The resulting table should contain the names of the participants who took the 4th to 8th places inclusive, sorted in descending order of their
+places. If there are fewer than 8 participants, the results should contain those who ranked lower than 3rd place.
+
+It is guaranteed that there are at least 3 prize winners in the leaderboard and that all participants have different scores.
+*/
+
+CREATE PROCEDURE solution()
+BEGIN
+	/* Write your SQL here. Terminate each statement with a semicolon. */
+	SELECT name
+	FROM leaderboard
+	ORDER BY score DESC
+	LIMIT 5 OFFSET 3;
+END
+
+--------------------------------------------- Ejercicio 9) ----------------------------------------------------------
+/*
+At the end of every semester your professor for "Introduction to Databases" saves the exam results of every student in a simple database
+system. In the database table Grades, there are five columns:
+
+Name: the name of the student;
+ID: the student's ID number (a 5 byte positive integer);
+Midterm1: the result of the first midterm out of 100 points;
+Midterm2: the result of the second midterm out of 100 points;
+Final: the result of the final exam, this time out of a possible 200 points.
+According to school policy, there are three possible ways to evaluate a grade:
+
+Option 1:
+Midterm 1: 25% of the grade
+Midterm 2: 25% of the grade
+Final exam: 50% of the grade
+Option 2:
+Midterm 1: 50% of the grade
+Midterm 2: 50% of the grade
+Option 3:
+Final exam: 100% of the grade.
+Each student's final grade comes from the option that works the best for that student.
+
+As a Teaching Assistant (TA), you need to query the name and id of all the students whose best grade comes from Option 3, sorted based on the
+first 3 characters of their name. If the first 3 characters of two names are the same, then the student with the lower ID value comes first.
+*/
+
+CREATE PROCEDURE solution()
+BEGIN
+	select Name, ID from Grades
+    where 2 * final > midterm1 + midterm2
+    order by left(name, 3) asc, id asc;
+END
+
 --::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--
 --::::::::::::::::::::::::::::::::::::::::::::::::::FIN:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--
