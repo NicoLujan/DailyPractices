@@ -250,5 +250,70 @@ BEGIN
     order by left(name, 3) asc, id asc;
 END
 
+--------------------------------------------- Ejercicio 10) ----------------------------------------------------------
+/*
+Your nephews Huey, Dewey, and Louie are staying with you over the winter holidays. Ever since they arrived, you've hardly had a day go by 
+without some kind of incident - the little rascals do whatever they please! Actually, you're not even mad; the ideas they come up with are 
+pretty amazing, and it looks like there's even a system to their mischief.
+
+You decided to track and analyze their behavior, so you created the mischief table in your local database. The table has the following columns:
+
+	mischief_date: the date of the mischief (of the date type);
+	author: the nephew who caused the mischief ("Huey", "Dewey" or "Louie");
+	title: the title of the mischief.
+
+It looks like each of your nephews is active on a specific day of the week. You decide to check your theory by creating another table as 
+follows:
+The resulting table should contain four columns, weekday, mischief_date, author, and title, where weekday is the weekday of mischief_date 
+(0 for Monday, 1 for Tuesday, and so on, with 6 for Sunday). The table should be sorted by the weekday column, and for each weekday Huey's 
+mischief should go first, Dewey's should go next, and Louie's should go last. In case of a tie, mischief_date should be a tie-breaker. If 
+there's still a tie, the record with the lexicographically smallest title should go first.
+
+It is guaranteed that all entries of mischief are unique.
+*/
+
+SELECT WEEKDAY(mischief_date) AS weekday, mischief_date, author, title
+	FROM mischief
+	ORDER BY weekday, CASE 
+    	WHEN author = 'Huey' THEN 1
+   		WHEN author = 'Dewey' THEN 2
+    	WHEN author = 'Louie' THEN 3
+		END, mischief_date, title;
+
+--------------------------------------------- Ejercicio 11) ----------------------------------------------------------
+/*
+A large amount of money was stolen today from the main city bank, and as the chief of police it's your duty to find the robber.
+
+You store information about your suspects in the table Suspect, which has the structure:
+
+	id: unique suspect id;
+	name: suspect first name;
+	surname: suspect surname;
+	height: suspect height;
+	weight: suspect weight.
+
+You have already gathered some evidence and discovered the following clues:
+
+according to the camera records, the robber is not taller than 170cm;
+the robber left their signature near the crime scene: "B. Gre?n". "B" definitely stands for the first letter of robber's name, and "Gre?n" is
+their surname. The 4th letter of the surname is smudged by ketchup and is unreadable.
+To make the list of suspects smaller, you would like to filter out the suspects who can't possibly be guilty according to the information 
+obtained from the clues. For each remaining suspect, you want to save his/her id, name and surname. Please note that the information obtained 
+from the clue should be considered case-insensitive, so for example "bill Green", and "Bill green", and "Bill Green" should all be included in 
+the new table.
+
+Given the table Suspect, build the resulting table as follows: the table should have columns id, name and surname and its values should be 
+ordered by the suspects' ids in ascending order.
+*/
+
+CREATE PROCEDURE solution()
+BEGIN
+	/* Write your SQL here. Terminate each statement with a semicolon. */
+	SELECT id, name, surname
+	FROM Suspect
+	WHERE height <= 170 AND LOWER(name) LIKE "b%" AND LOWER(surname) LIKE "gre_n"
+	ORDER BY id ASC;
+END
+
 --::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--
 --::::::::::::::::::::::::::::::::::::::::::::::::::FIN:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::--
