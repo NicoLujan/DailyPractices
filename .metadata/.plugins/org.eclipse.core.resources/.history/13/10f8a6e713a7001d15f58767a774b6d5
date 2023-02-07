@@ -94,7 +94,7 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		FiguraGeometrica f = null;
+		FiguraGeometrica f = new Cuadrado();
 		f.dibujar();
 	
 	}
